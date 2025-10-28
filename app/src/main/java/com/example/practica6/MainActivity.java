@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -48,8 +49,14 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                NotificationCompat.Builder notif = new NotificationCompat.Builder(MainActivity.this, CHANNEL_ID)
+                        .setSmallIcon(R.drawable.bob)
+                        .setContentTitle("Practica Lunes")
+                        .setContentText("Las Apps Wear Os deben funcionar")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                notificationManager.notify(NOTIFICATION_ID,notif.build());
             }
         });
     }
 }
+
