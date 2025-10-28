@@ -2,6 +2,9 @@ package com.example.practica6;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -19,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     NotificationManager notificationManager;
 
     static final int NOTIFICATION_ID = 0;
-    static final String NOTIFICACION_ID = "channel_id";
+    static final String CHANNEL_ID = "channel_id";
 
 
 
@@ -34,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        motificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID, "practicas",
@@ -49,8 +53,17 @@ public class MainActivity extends AppCompatActivity {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.rana, null);
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) drawable;
+                Bitmap fotografia1 = bitmapDrawable.getBitmap();
+
+
+
+
                 NotificationCompat.Builder notif = new NotificationCompat.Builder(MainActivity.this, CHANNEL_ID)
                         .setSmallIcon(R.drawable.bob)
+                        .setLargeIcon(fotografia1)
                         .setContentTitle("Practica Lunes")
                         .setContentText("Las Apps Wear Os deben funcionar")
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT);
