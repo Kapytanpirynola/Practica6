@@ -2,6 +2,8 @@ package com.example.practica6;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -59,7 +61,9 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap fotografia1 = bitmapDrawable.getBitmap();
 
 
-
+                Intent llamada = new Intent(MainActivity.this, MainActivity.class);
+                PendingIntent pendingIntent1 = PendingIntent.getActivity(MainActivity.this,0, llamada,
+                        PendingIntent.FLAG_IMMUTABLE);
 
                 NotificationCompat.Builder notif = new NotificationCompat.Builder(MainActivity.this, CHANNEL_ID)
                         .setSmallIcon(R.drawable.bob)
