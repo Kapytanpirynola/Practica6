@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 NotificationCompat.Builder notif = new NotificationCompat.Builder(MainActivity.this, CHANNEL_ID)
                         .setSmallIcon(R.drawable.bob)
                         .setLargeIcon(fotografia1)
+                        .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(fotografia1))
                         .setContentTitle("Practica Lunes")
                         .setContentText("Las Apps Wear Os deben funcionar")
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT);
