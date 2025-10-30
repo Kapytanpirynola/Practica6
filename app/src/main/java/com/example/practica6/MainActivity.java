@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
                         PendingIntent.FLAG_IMMUTABLE
                 );
 
-                // ✅ Intent para realizar una llamada (abre el marcador con el número)
                 Intent intentLlamada = new Intent(Intent.ACTION_DIAL);
                 intentLlamada.setData(Uri.parse("tel:6141331619"));
                 PendingIntent pendingIntentLlamada = PendingIntent.getActivity(
@@ -89,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
                         .setStyle(new NotificationCompat.BigPictureStyle().bigPicture(fotografia1))
                         .setContentTitle("Practica Lunes")
                         .setContentText("Las Apps Wear OS deben funcionar")
-                        .addAction(R.drawable.rana, "PÁGINA", pendingIntentPag) // Acción 1: abrir YouTube
-                        .addAction(R.drawable.bob, "LLAMAR", pendingIntentLlamada) // ✅ Acción 2: llamada
+                        .addAction(R.drawable.rana, "PÁGINA", pendingIntentPag)
+                        .addAction(R.drawable.bob, "LLAMAR", pendingIntentLlamada)
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
                 notificationManager.notify(NOTIFICATION_ID, notif.build());
